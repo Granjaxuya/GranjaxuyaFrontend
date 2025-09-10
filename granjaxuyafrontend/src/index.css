@@ -1,0 +1,32 @@
+:root {
+  --bg: #0f0f0f;
+  --beige: #d6d8c9;
+  --text: #f2f2f2;
+  --muted: #cfcfcf;
+  --brand: #e8e8e8;
+  --maxw: 1160px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.container {
+  width: min(100%, var(--maxw));
+  margin-inline: auto;
+  padding-inline: clamp(16px, 3vw, 28px);
+}
+
+.after-hero-fill {
+  background: var(--beige);
+  height: 40vh;
+  margin-top: -15vh;
+}
