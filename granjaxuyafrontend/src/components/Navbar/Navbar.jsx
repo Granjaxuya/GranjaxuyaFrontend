@@ -1,4 +1,5 @@
 // src/components/Navbar/Navbar.jsx
+import { Link } from "react-router-dom";
 import './Navbar.css';
 
 export default function Navbar() {
@@ -25,7 +26,7 @@ export default function Navbar() {
 
         <ul className="nav-list right">
           <li><a className="nav-link" href="#contacto">Contáctanos</a></li>
-          <li><a className="nav-link" href="#quienes">¿Quiénes Somos?</a></li>
+          <li><Link className="nav-link" to="/quienes">¿Quiénes Somos?</Link></li>
           <li>
             <button className="cart-btn" aria-label="Carrito">
               <img

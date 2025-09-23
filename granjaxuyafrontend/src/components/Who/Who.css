@@ -1,0 +1,42 @@
+.who {
+  position: relative;
+  min-height: 92vh;
+  display: grid;
+  place-items: center;
+  align-items: center;
+  background-image:
+    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+    url('../../../public/images/ChickenLP.jpg');
+  background-size: cover;
+  background-position: center;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 95%, 0 85%);
+}
+
+.who-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-items: center;
+  min-height: 92vh;
+}
+
+.who-copy {
+  max-width: 900px;
+  padding-top: 12vh;
+  text-align: center;
+  color: var(--beige);
+}
+
+.who-title {
+  margin: 0 0 8px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: .5px;
+  font-size: clamp(96px, 2.2vw, 36px);
+}
+
+.who-tagline {
+  margin: 0;
+  font-size: clamp(14px, 2.2vw, 24px);
+  color: var(--beige);
+}
