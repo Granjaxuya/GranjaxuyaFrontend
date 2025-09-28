@@ -1,8 +1,10 @@
 
 import './Who.css';
-
+import MissionVision from '../MissionVision/MissionVision';
 export default function Who() {
   return (
+    <>
+    
     <section id="home" className="who" role="banner" aria-label="Granja Xuya - Huevos frescos">
       <div className="who-inner container">
         <div className="who-copy">
@@ -13,5 +15,7 @@ export default function Who() {
         </div>
       </div>
     </section>
+    <MissionVision />
+    </>
   );
 }
