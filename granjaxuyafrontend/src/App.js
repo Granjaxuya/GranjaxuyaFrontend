@@ -1,26 +1,26 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import Navbar from './components/Navbar/Navbar';
-import Hero from './components/Hero/Hero';
-import './index.css';
-import About from './pages/AboutUs/AboutUs'
-function AfterHeroFill() {
-  const location = useLocation();
-  if (location.pathname !== '/') return null;
-  return <section className="after-hero-fill" aria-hidden="true" />;
-}
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Importar páginas
+import Home from "./pages/Home/Home";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import Products from "./pages/Products/Products";
+import Contact from "./pages/Contact/Contact";
+
+// Importar Navbar
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
-    <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Hero />} />
-          <Route path="/quienes" element={<About />} />
-        </Routes>
-        <AfterHeroFill />
-      </Router>
-    </>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/productos" element={<Products />} />
+        <Route path="/contacto" element={<Contact />} />
+        <Route path="/quienes-somos" element={<AboutUs />} />
+      </Routes>
+    </Router>
   );
 }
 

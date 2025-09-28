@@ -1,0 +1,75 @@
+.contact-container {
+  position: relative;
+  background: url('../../../public/images/ChickenLP.jpg') no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+/* Overlay oscuro sobre el fondo */
+.contact-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* controla la oscuridad */
+  z-index: 0;
+}
+
+.contact-title {
+  color: white;
+  font-size: 3.2rem;
+  margin-bottom: 50px;
+  text-align: center;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  position: relative;
+  z-index: 1;
+}
+
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-card {
+  background-color: #CDCFC0; /* semitransparente para contraste */
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+  text-align: center;
+  width: 260px;   /* antes 220px */
+  height: 400px;  /* altura más grande */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-card:hover {
+  transform: scale(1.07);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}
+
+.contact-card h3 {
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  color: #212529;
+}
+
+.contact-icon {
+  font-size: 50px;
+  margin: 10px 0;
+  color: #000;
+}
+
+.contact-card p {
+  margin-top: 8px;
+  font-size: 1.1rem;
+  color: #212529;
+}
