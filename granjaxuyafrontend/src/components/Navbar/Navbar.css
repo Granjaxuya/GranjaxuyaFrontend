@@ -8,7 +8,7 @@
 }
 
 .site-header.scrolled {
-  background: #0f1d2d; /* azul sólido */
+  background: #0f1d2d;
 }
 
 
@@ -83,9 +83,21 @@
   display: grid;
   place-items: center;
   opacity: .95;
+  position: relative;
 }
 .cart-btn:hover { 
     opacity: 1; 
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem;
 }
 
 /*Diseño responsivo*/
