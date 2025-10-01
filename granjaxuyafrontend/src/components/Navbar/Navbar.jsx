@@ -1,10 +1,19 @@
 // src/components/Navbar/Navbar.jsx
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './Navbar.css';
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="site-header">
+    <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
       <nav className="nav container" aria-label="Principal">
         <a href="/" className="brand" aria-label="Inicio Granja Xuya">
           <img
@@ -16,7 +25,7 @@ export default function Navbar() {
 
         <ul className="nav-list left">
           <li>
-            <a className="nav-link active" href="#home">
+            <a className="nav-link active" href="/">
               Home
               <span className="underline" />
             </a>
@@ -42,4 +51,3 @@ export default function Navbar() {
     </header>
   );
 }
-

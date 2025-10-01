@@ -9,6 +9,7 @@ import Contact from "./pages/Contact/Contact";
 
 // Importar Navbar
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/contacto" element={<Contact />} />
         <Route path="/quienes-somos" element={<AboutUs />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
