@@ -25,7 +25,7 @@ export default function Navbar() {
         </ul>
 
         <ul className="nav-list right">
-          <li><a className="nav-link" href="#contacto">Contáctanos</a></li>
+          <li><a className="nav-link" href="/contacto">Contáctanos</a></li>
           <li><Link className="nav-link" to="/quienes-somos">¿Quiénes Somos?</Link></li>
           <li>
             <button className="cart-btn" aria-label="Carrito">
