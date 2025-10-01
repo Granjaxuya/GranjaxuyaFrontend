@@ -9,7 +9,7 @@ body{
   place-items: center;
   align-items: center;
   background-image:
-    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,0)),
+    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
     url('../../../public/images/ChickenLP.jpg');
   background-size: cover;
   background-position: center;
@@ -25,7 +25,6 @@ body{
 }
 
 .who-copy {
-  max-width: 900px;
   padding-top: 12vh;
   text-align: center;
   color: var(--beige);
