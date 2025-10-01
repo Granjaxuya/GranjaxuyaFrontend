@@ -1,0 +1,12 @@
+.footer {
+  background: var(--brown, #5a4634); /* usa tu variable global si tienes */
+  color: var(--beige, #fdfaf5);
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
