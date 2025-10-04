@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './Navbar.css';
 
-export default function Navbar({ cartCount }) {
+export default function Navbar({ cartCount , onCartClick}) {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const isProductsPage = location.pathname === '/productos';
@@ -50,7 +50,7 @@ export default function Navbar({ cartCount }) {
           <li><a className="nav-link" href="/contacto">Contáctanos</a></li>
           <li><Link className="nav-link" to="/quienes-somos">¿Quiénes Somos?</Link></li>
           <li>
-            <button className="cart-btn" aria-label="Carrito">
+            <button className="cart-btn" aria-label="Carrito" onClick={onCartClick}>
               <img
                 src="/images/WhiteCart.png"
                 alt="Carrito"

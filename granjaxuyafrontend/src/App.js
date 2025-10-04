@@ -11,14 +11,16 @@ import Contact from "./pages/Contact/Contact";
 // Importar Navbar
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
+import CartMenu from "./components/CartMenu/CartMenu";
 
 function App() {
 
   const [cartCount, setCartCount] = useState(0);
-
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  
   return (
     <Router>
-      <Navbar cartCount={cartCount} />
+      <Navbar cartCount={cartCount} onCartClick={() => setIsCartOpen(true)}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productos" element={<Products cartCount={cartCount} setCartCount={setCartCount} />} />
@@ -26,6 +28,7 @@ function App() {
         <Route path="/quienes-somos" element={<AboutUs />} />
       </Routes>
       <Footer />
+      <CartMenu isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </Router>
   );
 }
