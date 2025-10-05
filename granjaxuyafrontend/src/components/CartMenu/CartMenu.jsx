@@ -6,6 +6,22 @@ export default function CartMenu({ isOpen, onClose }) {
     { id: 1, name: "Huevos Orgánicos", price: 25, quantity: 1 },
   ]);
 
+  // ➕ Función para agregar productos distintos
+  const addItem = (newItem) => {
+    setItems((prevItems) => {
+      const existing = prevItems.find((i) => i.id === newItem.id);
+      if (existing) {
+        // Si ya existe, aumenta cantidad
+        return prevItems.map((i) =>
+          i.id === newItem.id ? { ...i, quantity: i.quantity + 1 } : i
+        );
+      } else {
+        // Si es nuevo, lo agrega al listado
+        return [...prevItems, { ...newItem, quantity: 1 }];
+      }
+    });
+  };
+
   const updateQuantity = (id, delta) => {
     setItems(items.map(item =>
       item.id === id
@@ -13,6 +29,12 @@ export default function CartMenu({ isOpen, onClose }) {
         : item
     ));
   };
+
+  // 💰 Calcular total
+  const total = items.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className={`cart-overlay ${isOpen ? "show" : ""}`} onClick={onClose}>
@@ -42,7 +64,12 @@ export default function CartMenu({ isOpen, onClose }) {
           )}
         </div>
 
-        <button className="checkout-btn">Finalizar Compra</button>
+        {/* Botón inferior con total */}
+        {items.length > 0 && (
+          <button className="checkout-btn">
+            Continuar con la compra – Q{total.toFixed(2)}
+          </button>
+        )}
       </div>
     </div>
   );
