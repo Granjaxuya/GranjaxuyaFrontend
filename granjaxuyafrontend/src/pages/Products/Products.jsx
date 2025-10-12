@@ -19,16 +19,14 @@ const sampleProducts = [
   { id: 15, title: "Caja de uvas", price: 40, image: "/images/cat1.png" },
 ];
 
-export default function Products({ setCartCount }) {
+export default function Products({ onAddToCart  }) {
   const [openDropdown, setOpenDropdown] = useState(null); 
   const [sortType, setSortType] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 12;
 
-
-
   const addToCart = (product) => {
-    setCartCount((prev) => prev + 1);
+    onAddToCart(product); 
   };
 
   const sortBy = (type) => {
