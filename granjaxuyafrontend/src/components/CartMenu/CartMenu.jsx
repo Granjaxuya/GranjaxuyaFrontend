@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./CartMenu.css";
 
 export default function CartMenu({ isOpen, onClose }) {
   const [items, setItems] = useState([
     { id: 1, name: "Huevos Orgánicos", price: 25, quantity: 1 },
   ]);
+  const navigate = useNavigate();
 
   // ➕ Función para agregar productos distintos
   const addItem = (newItem) => {
@@ -66,7 +68,13 @@ export default function CartMenu({ isOpen, onClose }) {
 
         {/* Botón inferior con total */}
         {items.length > 0 && (
-          <button className="checkout-btn">
+          <button
+            className="checkout-btn"
+            onClick={() => {
+              onClose?.();
+              navigate("/checkout");
+            }}
+          >
             Continuar con la compra – Q{total.toFixed(2)}
           </button>
         )}
