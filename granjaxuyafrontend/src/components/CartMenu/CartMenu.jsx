@@ -1,38 +1,20 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CartMenu.css";
 
-export default function CartMenu({ isOpen, onClose }) {
-  const [items, setItems] = useState([
-    { id: 1, name: "Huevos Orgánicos", price: 25, quantity: 1 },
-  ]);
-  const navigate = useNavigate();
-
-  // ➕ Función para agregar productos distintos
-  const addItem = (newItem) => {
-    setItems((prevItems) => {
-      const existing = prevItems.find((i) => i.id === newItem.id);
-      if (existing) {
-        // Si ya existe, aumenta cantidad
-        return prevItems.map((i) =>
-          i.id === newItem.id ? { ...i, quantity: i.quantity + 1 } : i
-        );
-      } else {
-        // Si es nuevo, lo agrega al listado
-        return [...prevItems, { ...newItem, quantity: 1 }];
-      }
-    });
-  };
+export default function CartMenu({ isOpen, onClose, items, setItems }) {
+  const navigate = useNavigate(); // ✅ <-- agrégala aquí
 
   const updateQuantity = (id, delta) => {
-    setItems(items.map(item =>
-      item.id === id
-        ? { ...item, quantity: Math.max(0, item.quantity + delta) }
-        : item
-    ));
+    setItems(items
+      .map(item =>
+        item.id === id
+          ? { ...item, quantity: Math.max(0, item.quantity + delta) }
+          : item
+      )
+      .filter(item => item.quantity > 0)
+    );
   };
-
-  // 💰 Calcular total
+  
   const total = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -53,7 +35,7 @@ export default function CartMenu({ isOpen, onClose }) {
             items.map(item => (
               <div key={item.id} className="cart-item">
                 <div className="item-info">
-                  <strong>{item.name}</strong>
+                  <strong>{item.title || item.name}</strong>
                   <p>Q{item.price}</p>
                 </div>
                 <div className="quantity-controls">
@@ -66,7 +48,6 @@ export default function CartMenu({ isOpen, onClose }) {
           )}
         </div>
 
-        {/* Botón inferior con total */}
         {items.length > 0 && (
           <button
             className="checkout-btn"
@@ -75,7 +56,7 @@ export default function CartMenu({ isOpen, onClose }) {
               navigate("/checkout");
             }}
           >
-            Continuar con la compra – Q{total.toFixed(2)}
+            Continuar con la compra - Q{total.toFixed(2)}
           </button>
         )}
       </div>
