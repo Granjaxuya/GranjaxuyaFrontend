@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Importar páginas
@@ -17,8 +17,14 @@ import CartMenu from "./components/CartMenu/CartMenu";
 function App() {
 
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(()=> {
+    const saved = localStorage.getItem("cartItems");
+    return saved ? JSON.parse(saved) :[];
+  });
   
+  useEffect(()=>{
+    localStorage.setItem("cartItems", JSON.stringify(items));
+  },[items]);
     // 🔹 Función global para agregar productos al carrito
   const addItem = (newItem) => {
     setItems((prevItems) => {

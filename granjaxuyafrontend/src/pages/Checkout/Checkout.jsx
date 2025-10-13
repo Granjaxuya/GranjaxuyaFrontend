@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Checkout.css";
 
 export default function Checkout() {
@@ -15,6 +16,7 @@ export default function Checkout() {
     infoExtra: "",
   });
 
+  const navigate = useNavigate();
   const [errorsId, setErrorsId] = useState({});
   const [errorsEnvio, setErrorsEnvio] = useState({});
 
@@ -40,16 +42,32 @@ export default function Checkout() {
     return e;
   };
 
-  const onSubmit = (ev) => {
+  const onSubmit = async (ev) => {
     ev.preventDefault();
     const e1 = validateIdentificacion(identificacion);
     const e2 = validateEnvio(envio);
     setErrorsId(e1);
     setErrorsEnvio(e2);
     if (Object.keys(e1).length === 0 && Object.keys(e2).length === 0) {
+      const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+      if(cartItems.length === 0){
+        alert("El carrito se encuentra actualmente vacio");
+        return;
+      }
+
+      const ordenEnvio ={
+        identificacion,
+        envio,
+        productos: cartItems,
+      };
+      console.log("Enviando pedido al backend", ordenEnvio);
+
+      localStorage.removeItem("cartItems");
       // hacer aquí lógica de envío de correos y confirmación del pedido
       console.log("Checkout OK", { identificacion, envio });
       alert("Tus datos fueron validados. Continuaremos con el pedido.");
+      navigate("/");
+      window.location.reload();
     }
   };
 
