@@ -67,8 +67,8 @@ export default function Checkout() {
 
     try {
       setLoading(true);
-      const API_URL = "http://localhost:3000";
-      const resp = await fetch(`${API_URL}/api/checkout`, {
+      //const API_URL = "http://localhost:3000";
+      const resp = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(ordenEnvio),
@@ -103,7 +103,7 @@ export default function Checkout() {
       <form className="checkout-grid" onSubmit={onSubmit} noValidate>
         <section className="card">
           <h2>Identificación</h2>
-          <label>
+          <label className="checkout-label">
             Nombres:
             <input
               type="text"
@@ -117,7 +117,7 @@ export default function Checkout() {
             />
             {errorsId.nombres && <small>{errorsId.nombres}</small>}
           </label>
-          <label>
+          <label className="checkout-label">
             Apellidos:
             <input
               type="text"
@@ -131,7 +131,7 @@ export default function Checkout() {
             />
             {errorsId.apellidos && <small>{errorsId.apellidos}</small>}
           </label>
-          <label>
+          <label className="checkout-label">
             Teléfono:
             <input
               type="text"
@@ -145,7 +145,7 @@ export default function Checkout() {
             />
             {errorsId.telefono && <small>{errorsId.telefono}</small>}
           </label>
-          <label>
+          <label className="checkout-label">
             Correo electrónico:
             <input
               type="email"
@@ -163,7 +163,7 @@ export default function Checkout() {
 
         <section className="card">
           <h2>Datos de envío</h2>
-          <label>
+          <label className="checkout-label">
             Departamento:
             <select
               value={envio.departamento}
@@ -179,7 +179,7 @@ export default function Checkout() {
             {errorsEnvio.departamento && <small>{errorsEnvio.departamento}</small>}
           </label>
 
-          <label>
+          <label className="checkout-label">
             Municipio:
             <select
               value={envio.municipio}
@@ -195,7 +195,7 @@ export default function Checkout() {
             {errorsEnvio.municipio && <small>{errorsEnvio.municipio}</small>}
           </label>
 
-          <label>
+          <label className="checkout-label">
             Dirección:
             <input
               type="text"
@@ -207,7 +207,7 @@ export default function Checkout() {
             {errorsEnvio.direccion && <small>{errorsEnvio.direccion}</small>}
           </label>
 
-          <label>
+          <label className="checkout-label">
             Información adicional:
             <textarea
               value={envio.infoExtra}
