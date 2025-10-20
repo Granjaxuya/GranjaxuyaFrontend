@@ -15,6 +15,10 @@ export default function CartMenu({ isOpen, onClose, items, setItems }) {
     );
   };
   
+  const removeItem = (id) => {
+  setItems(items.filter(item => item.id !== id));
+};
+
   const total = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -43,6 +47,7 @@ export default function CartMenu({ isOpen, onClose, items, setItems }) {
                   <span>{item.quantity}</span>
                   <button onClick={() => updateQuantity(item.id, 1)}>+</button>
                 </div>
+                <button className="remove-btn" onClick={() => removeItem(item.id)}>X</button>
               </div>
             ))
           )}
