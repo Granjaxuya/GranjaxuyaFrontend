@@ -8,6 +8,7 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import Products from "./pages/Products/Products";
 import Contact from "./pages/Contact/Contact";
 import Checkout from "./pages/Checkout/Checkout";
+import Confirmation from "./pages/Confirmation/Confirmation";
 
 // Importar Navbar
 import Navbar from "./components/Navbar/Navbar";
@@ -53,6 +54,7 @@ function App() {
         <Route path="/contacto" element={<Contact />} />
         <Route path="/quienes-somos" element={<AboutUs />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/confirmacion" element={<Confirmation />} />
       </Routes>
       <Footer />
       <CartMenu isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} items={items} setItems={setItems} />

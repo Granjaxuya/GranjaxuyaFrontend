@@ -76,10 +76,10 @@ export default function Checkout() {
 
       if (!resp.ok) throw new Error("Error al enviar el pedido");
 
-      alert("✅ Pedido enviado correctamente. Revisa tu correo.");
-      localStorage.removeItem("cartItems");
-      navigate("/");
-      window.location.reload();
+      // ✅ Redirigir a la página de confirmación
+      localStorage.removeItem("cartItems"); // Limpia el carrito
+      navigate("/confirmacion"); // Manda al usuario a la nueva pantalla
+
     } catch (err) {
       console.error("Error al enviar pedido:", err);
       alert("Ocurrió un error al enviar tu pedido. Inténtalo de nuevo.");

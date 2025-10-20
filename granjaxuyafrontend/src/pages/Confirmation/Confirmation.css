@@ -1,0 +1,55 @@
+/* ======== Navbar fix para la página de confirmación ======== */
+.confirmation-page .site-header {
+  background: #0f1d2d !important; /* mismo color que .scrolled */
+  backdrop-filter: none !important;
+  transition: none !important;
+}
+
+.confirmation-page .nav-link {
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.confirmation-page .nav-link:hover {
+  opacity: 0.85 !important;
+}
+
+.confirmation-page .cart-btn {
+  color: #fff !important;
+}
+
+/* ======== Estilos de confirmación ======== */
+.confirmation-container {
+  background-color: #e9ecdf;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px; /* deja espacio para el navbar */
+}
+
+.confirmation-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 480px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+h2 {
+  color: #0a1528;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.5;
+}
