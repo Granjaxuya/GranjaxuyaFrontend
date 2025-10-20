@@ -49,6 +49,7 @@
   flex-direction: column;
   justify-content: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none; /* Quita el subrayado azul */
 }
 
 .contact-card:hover {
