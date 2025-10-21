@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./CartMenu.css";
 
 export default function CartMenu({ isOpen, onClose, items, setItems }) {
-  const navigate = useNavigate(); // ✅ <-- agrégala aquí
+  const navigate = useNavigate(); 
 
   const updateQuantity = (id, delta) => {
     setItems(items

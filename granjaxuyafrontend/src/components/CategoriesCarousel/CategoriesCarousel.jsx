@@ -3,32 +3,44 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./CategoriesCarousel.css";
 
-// De momento son datos quemados a reemplazarse por los de la base de datos
 const categories = [
-  { id: 1, name: "Huevos XL", img: "/images/cat3.png" },
-  { id: 2, name: "Huevos Orgánicos", img: "/images/cat3.png" },
-  { id: 3, name: "Huevos de Campo", img: "/images/cat3.png" },
-  { id: 4, name: "Lácteos", img: "/images/cat2.png" },
-  { id: 5, name: "Frutas y Verduras", img: "/images/cat1.png" },
-  { id: 6, name: "Otros Productos", img: "/images/cat1.png" },
-  { id: 7, name: "Otros Productos", img: "/images/cat1.png" },
-  { id: 8, name: "Otros Productos", img: "/images/cat1.png" },
-  { id: 9, name: "Otros Productos", img: "/images/cat1.png" },
+  { id: 1, name: "Cartón Pequeño", img: "/images/cat3.png" },
+  { id: 2, name: "Cartón Mediano", img: "/images/cat3.png" },
+  { id: 3, name: "Cartón Grande", img: "/images/cat3.png" },
+  { id: 4, name: "Cartón Jumbo", img: "/images/cat3.png" },
+  { id: 5, name: "Cartón Extra Jumbo", img: "/images/cat3.png" },
 ];
 
 export default function CategoriesCarousel() {
   const settings = {
-    arrows: true,
     dots: true,
+    arrows: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3, // muestra 3 tarjetas por slide
+    slidesToShow: 3,
     slidesToScroll: 3,
+    adaptiveHeight: true,
     customPaging: () => <span className="custom-dot" />,
     appendDots: dots => <ul className="custom-dots">{dots}</ul>,
+
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 2 } },
-      { breakpoint: 768,  settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 735,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          centerMode: true,
+          centerPadding: "0px", 
+        },
+      },
     ],
   };
 
@@ -38,7 +50,7 @@ export default function CategoriesCarousel() {
 
       {/* wrapper para evitar el desbordamiento del contenido */}
       <div className="categories-slider">
-        <Slider {...settings}>
+        <Slider key={window.innerWidth < 735 ? "mobile" : "desktop"} {...settings}>
           {categories.map(cat => (
             <div key={cat.id}>
               <div className="category-card">

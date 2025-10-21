@@ -2,21 +2,22 @@
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 40;
-  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
   backdrop-filter: saturate(120%) blur(2px);
   transition: background 0.3s ease;
 }
 
 .site-header.scrolled {
   background: #0f1d2d;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
 
-
+/* --- Navbar general --- */
 .nav {
   height: 72px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
 }
 
@@ -24,14 +25,26 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--brand);
   text-decoration: none;
-  font-weight: 700;
 }
 
 .brand-img {
   width: 80px;
   height: 80px;
+}
+
+.nav.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .nav-list {
@@ -42,36 +55,55 @@
   gap: clamp(16px, 3vw, 28px);
 }
 
-.nav-list.left { 
-    justify-self: start; 
-}
-.nav-list.right { 
-    justify-self: end; 
+.nav-list.left {
+  justify-content: flex-start;
 }
 
+.nav-list.right {
+  justify-content: flex-end;
+}
+
+/* Enlaces del navbar */
 .nav-link {
   position: relative;
   color: var(--text);
   text-decoration: none;
   font-weight: 500;
-  font-size: .98rem;
-  opacity: .9;
+  font-size: 0.98rem;
+  opacity: 0.9;
+  line-height: 1.2; 
+  transition: all 0.25s ease;
 }
 
-.nav-link:hover { 
-    opacity: 1; 
-}
-.nav-link.active { 
-    font-weight: 600; 
+.nav-link:hover {
+  opacity: 1;
 }
 
-.nav-link .underline {
-  position: absolute;
-  left: 0; right: 0; bottom: -10px;
-  height: 3px;
-  background: var(--text);
-  border-radius: 2px;
+.nav-link.active {
+  font-weight: 600;
+  opacity: 1;
+}
+
+.nav-link::after {
   content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--text);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-link.active::after {
+  transform: scaleX(1);
 }
 
 .cart-btn {
@@ -82,11 +114,12 @@
   padding: 4px;
   display: grid;
   place-items: center;
-  opacity: .95;
+  opacity: 0.95;
   position: relative;
 }
-.cart-btn:hover { 
-    opacity: 1; 
+
+.cart-btn:hover {
+  opacity: 1;
 }
 
 .cart-count {
@@ -100,13 +133,67 @@
   font-size: 0.7rem;
 }
 
-/*Diseño responsivo*/
-@media (max-width: 920px){
-  .nav { grid-template-columns: auto 1fr; }
-  .nav-list.left { display: none; }
+/* Hamburger menu button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 1001;
 }
-@media (max-width: 520px){
-  .site-header { background: rgba(0,0,0,.55); }
-  .nav-list.right { gap: 14px; }
-  .nav-link { font-size: .95rem; }
+
+/* Responsive */
+@media (max-width: 920px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1.5rem 0;
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+
+  .menu.open {
+    display: flex;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 1.8rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-list li {
+    padding: 0.4rem 0;
+  }
+
+  .nav-list li:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .nav-link {
+    color: white;
+    font-size: 1.1rem;
+    letter-spacing: 0.3px;
+  }
+
+  .brand-img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
 }

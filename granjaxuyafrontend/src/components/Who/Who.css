@@ -27,7 +27,7 @@ body{
 .who-copy {
   padding-top: 12vh;
   text-align: center;
-  color: var(--beige);
+  color: var(--white);
 }
 
 .who-title {
@@ -39,7 +39,9 @@ body{
 }
 
 .who-tagline {
-  margin: 0;
-  font-size: clamp(14px, 2.2vw, 24px);
+  margin: 0 auto;
+  max-width: 900px; /* mantiene un ancho de lectura cómodo */
+  font-size: clamp(20px, 1.5vw, 22px); /* antes: 14px–24px */
   color: var(--beige);
+  line-height: 1.6;
 }

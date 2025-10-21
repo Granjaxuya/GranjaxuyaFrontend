@@ -122,7 +122,28 @@
   .category-card { max-width: 260px; height: 300px; }
   .category-card img { max-height: 180px; }
 }
-@media (max-width: 768px) {
-  .category-card { max-width: 240px; height: 280px; }
-  .category-card img { max-height: 160px; }
+/* === FIX del desbordamiento lateral del carrusel === */
+.slick-list {
+  margin: 0 !important;              /* elimina el margen negativo que empuja fuera */
 }
+
+.slick-track {
+  display: flex !important;
+  overflow: visible !important;      /* deja ver contenido sin romper scroll */
+}
+
+.slick-slide {
+  box-sizing: border-box;
+}
+
+/* Si las flechas están fuera del área, las movemos dentro */
+.slick-prev, .slick-next {
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .slick-prev, .slick-next {
+    display: none !important;        /* oculta flechas en móvil */
+  }
+}
+

@@ -31,20 +31,18 @@
   font-weight: 600;
   line-height: 1.05;
   letter-spacing: .5px;
-  font-size: clamp(96px, 2.2vw, 36px);
+  font-size: clamp(90px, 2.2vw, 90px);
 }
 
 .hero-subtitle {
-  margin: 8px 0 10px;
-  font-size: clamp(14px, 2.2vw, 24px);
-  /*font-weight: 600;*/
-  padding-top: 2vh;
-  opacity: .95;
+  margin: 20px 0 10px;
+  font-size: clamp(24px, 2.5vw, 24px);
   color: var(--beige);
+  opacity: 0.95;
 }
 
 .hero-tagline {
   margin: 0;
-  font-size: clamp(14px, 2.2vw, 24px);
+  font-size: clamp(24px, 2.2vw, 24px);
   color: var(--beige);
 }

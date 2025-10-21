@@ -10,3 +10,7 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.footer p {
+  color: var(--text)
+}

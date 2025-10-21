@@ -1,0 +1,134 @@
+/* Fondo oscuro detrás del modal */
+.product-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 29, 45, 0.65);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+
+/* Panel lateral */
+.product-modal {
+  background-color: #fff;
+  width: 420px;
+  max-width: 90%;
+  height: 100%;
+  box-shadow: -6px 0 20px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  animation: slideIn 0.35s ease forwards;
+  position: relative;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Cerrar modal */
+.modal-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #0f1d2d;
+}
+
+/* Contenido */
+.modal-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-product-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 1.2rem;
+}
+
+.modal-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: #0f1d2d;
+}
+
+.modal-description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  background-color: #f7f7f7;
+  padding: 1.2rem 1.4rem;
+  border-radius: 10px;
+  margin-bottom: 1.6rem;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #222;
+}
+
+.modal-description p {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.modal-description strong {
+  color: #0f1d2d;
+  font-weight: 600;
+}
+
+.icon-egg {
+  width: 18px;
+  height: 18px;
+  color: #0f1d2d;
+  flex-shrink: 0;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+
+.modal-weight {
+  border-left: 3px solid #0f1d2d;
+  padding-left: 0.6rem;
+}
+
+.modal-price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+  color: #0f1d2d;
+}
+
+.modal-add-btn {
+  background-color: #0f1d2d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.modal-add-btn:hover {
+  background-color: #162b40;
+}
