@@ -7,10 +7,11 @@ export default function Navbar({ cartCount, onCartClick }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-  const isProductsPage = location.pathname === "/productos";
+  const isSolidNavbarPage =
+  location.pathname === "/productos" || location.pathname === "/checkout";
 
   useEffect(() => {
-    if (isProductsPage) {
+    if (isSolidNavbarPage) {
       setScrolled(true);
       return;
     }
@@ -18,7 +19,7 @@ export default function Navbar({ cartCount, onCartClick }) {
     const onScroll = () => setScrolled(window.scrollY > 1);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isProductsPage]);
+  }, [isSolidNavbarPage]);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -54,7 +55,7 @@ export default function Navbar({ cartCount, onCartClick }) {
             </li>
             <li>
               <a
-                className={`nav-link ${isProductsPage ? "active" : ""}`}
+                className={`nav-link ${location.pathname === "/productos" ? "active" : ""}`}
                 href="/productos"
               >
                 Productos

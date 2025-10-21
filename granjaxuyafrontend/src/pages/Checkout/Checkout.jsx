@@ -76,9 +76,9 @@ export default function Checkout() {
 
       if (!resp.ok) throw new Error("Error al enviar el pedido");
 
-      // ✅ Redirigir a la página de confirmación
-      localStorage.removeItem("cartItems"); // Limpia el carrito
-      navigate("/confirmacion"); // Manda al usuario a la nueva pantalla
+      // Redirigir a la página de confirmación
+      localStorage.removeItem("cartItems"); 
+      navigate("/confirmacion"); 
 
     } catch (err) {
       console.error("Error al enviar pedido:", err);
@@ -107,6 +107,7 @@ export default function Checkout() {
             Nombres:
             <input
               type="text"
+              className={errorsId.nombres ? "error" : ""}
               value={identificacion.nombres}
               onChange={(e) =>
                 setIdentificacion({
@@ -115,12 +116,13 @@ export default function Checkout() {
                 })
               }
             />
-            {errorsId.nombres && <small>{errorsId.nombres}</small>}
+            {errorsId.nombres && <small className="error">{errorsId.nombres}</small>}
           </label>
           <label className="checkout-label">
             Apellidos:
             <input
               type="text"
+              className={errorsId.apellidos ? "error" : ""}
               value={identificacion.apellidos}
               onChange={(e) =>
                 setIdentificacion({
@@ -129,12 +131,13 @@ export default function Checkout() {
                 })
               }
             />
-            {errorsId.apellidos && <small>{errorsId.apellidos}</small>}
+            {errorsId.apellidos && <small className="error">{errorsId.apellidos}</small>}
           </label>
           <label className="checkout-label">
             Teléfono:
             <input
               type="text"
+              className={errorsId.telefono ? "error" : ""}
               value={identificacion.telefono}
               onChange={(e) =>
                 setIdentificacion({
@@ -143,12 +146,13 @@ export default function Checkout() {
                 })
               }
             />
-            {errorsId.telefono && <small>{errorsId.telefono}</small>}
+            {errorsId.telefono && <small className="error">{errorsId.telefono}</small>}
           </label>
           <label className="checkout-label">
             Correo electrónico:
             <input
               type="email"
+              className={errorsId.email ? "error" : ""}
               value={identificacion.email}
               onChange={(e) =>
                 setIdentificacion({
@@ -157,7 +161,7 @@ export default function Checkout() {
                 })
               }
             />
-            {errorsId.email && <small>{errorsId.email}</small>}
+            {errorsId.email && <small className="error">{errorsId.email}</small>}
           </label>
         </section>
 
@@ -166,6 +170,7 @@ export default function Checkout() {
           <label className="checkout-label">
             Departamento:
             <select
+              className={errorsEnvio.departamento ? "error" : ""}
               value={envio.departamento}
               onChange={(e) =>
                 setEnvio({ ...envio, departamento: e.target.value })
@@ -176,12 +181,13 @@ export default function Checkout() {
                 <option key={d}>{d}</option>
               ))}
             </select>
-            {errorsEnvio.departamento && <small>{errorsEnvio.departamento}</small>}
+            {errorsEnvio.departamento && <small className="error">{errorsEnvio.departamento}</small>}
           </label>
 
           <label className="checkout-label">
             Municipio:
             <select
+              className={errorsEnvio.municipio ? "error" : ""}
               value={envio.municipio}
               onChange={(e) =>
                 setEnvio({ ...envio, municipio: e.target.value })
@@ -192,19 +198,20 @@ export default function Checkout() {
                 <option key={m}>{m}</option>
               ))}
             </select>
-            {errorsEnvio.municipio && <small>{errorsEnvio.municipio}</small>}
+            {errorsEnvio.municipio && <small className="error">{errorsEnvio.municipio}</small>}
           </label>
 
           <label className="checkout-label">
             Dirección:
             <input
               type="text"
+              className={errorsEnvio.direccion ? "error" : ""}
               value={envio.direccion}
               onChange={(e) =>
                 setEnvio({ ...envio, direccion: e.target.value })
               }
             />
-            {errorsEnvio.direccion && <small>{errorsEnvio.direccion}</small>}
+            {errorsEnvio.direccion && <small className="error">{errorsEnvio.direccion}</small>}
           </label>
 
           <label className="checkout-label">
