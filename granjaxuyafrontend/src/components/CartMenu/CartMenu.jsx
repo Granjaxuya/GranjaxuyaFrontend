@@ -40,7 +40,7 @@ export default function CartMenu({ isOpen, onClose, items, setItems }) {
               <div key={item.id} className="cart-item">
                 <div className="item-info">
                   <strong>{item.title || item.name}</strong>
-                  <p>Q{item.price}</p>
+                  <p>Q{item.price.toFixed(2)}</p>
                 </div>
                 <div className="quantity-controls">
                   <button onClick={() => updateQuantity(item.id, -1)}>-</button>
